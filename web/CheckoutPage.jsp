@@ -11,9 +11,12 @@
 <%
     String userName = null;
 //allow access only if session exists
+    /*
+    // We are using filters to do the authentication
     if(session.getAttribute("user") == null){
         response.sendRedirect("login.html");
     }else userName = (String) session.getAttribute("user");
+    */
     String sessionID = null;
     Cookie[] cookies = request.getCookies();
     if(cookies !=null){

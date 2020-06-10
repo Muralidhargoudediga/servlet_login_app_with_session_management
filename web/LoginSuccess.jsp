@@ -10,10 +10,15 @@
 <body>
 <%
   //allow access only if session exists
-  String user = null;
+  //String user = null;
+  /*
+  //We are using filters to do the authentication
   if(session.getAttribute("user") == null){
     response.sendRedirect("login.html");
   }else user = (String) session.getAttribute("user");
+  */
+
+  String user = (String) session.getAttribute("user");
   String userName = null;
   String sessionID = null;
   Cookie[] cookies = request.getCookies();
