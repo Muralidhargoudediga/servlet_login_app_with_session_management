@@ -16,7 +16,7 @@
         <param-value>mysql_pwd</param-value>
     </context-param>
 
-    <display-name>LoginExample</display-name>
+    <display-name>ServletCookieExample</display-name>
     <welcome-file-list>
         <welcome-file>login.html</welcome-file>
     </welcome-file-list>

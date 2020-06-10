@@ -1,4 +1,3 @@
-
 <%@ page language="java" contentType="text/html; charset=US-ASCII"
          pageEncoding="US-ASCII"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "https://www.w3.org/TR/html4/loose.dtd">
@@ -8,7 +7,20 @@
   <title>Login Success Page</title>
 </head>
 <body>
-<h3>Hi Murali, Login successful.</h3>
-<a href="login.html">Login Page</a>
+<%
+  String userName = null;
+  Cookie[] cookies = request.getCookies();
+  if(cookies !=null){
+    for(Cookie cookie : cookies){
+      if(cookie.getName().equals("user")) userName = cookie.getValue();
+    }
+  }
+  if(userName == null) response.sendRedirect("login.html");
+%>
+<h3>Hi <%=userName %>, Login successful.</h3>
+<br>
+<form action="LogoutServlet" method="post">
+  <input type="submit" value="Logout" >
+</form>
 </body>
 </html>
