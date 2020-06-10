@@ -7,10 +7,7 @@ import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebInitParam;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.*;
 
 /**
  * Servlet Tutorial - Servlet Example
@@ -49,10 +46,18 @@ public class LoginServlet extends HttpServlet {
         //log("User="+user+"::password="+pwd);
 
         if(userID.equals(user) && password.equals(pwd)){
-            Cookie loginCookie = new Cookie("user", user);
+           // Cookie loginCookie = new Cookie("user", user);
             //Setting cookie to expire in 30 min
-            loginCookie.setMaxAge(30 * 60);
-            response.addCookie(loginCookie);
+            //loginCookie.setMaxAge(30 * 60);
+            //response.addCookie(loginCookie);
+
+            HttpSession session = request.getSession();
+            session.setAttribute("user", "Admin");
+            //setting session to expiry in 30 mins
+            session.setMaxInactiveInterval(30 * 60);
+            Cookie userName = new Cookie("user", user);
+            userName.setMaxAge(30*60);
+            response.addCookie(userName);
             response.setStatus(200);
             response.sendRedirect("LoginSuccess.jsp");
         }else{
