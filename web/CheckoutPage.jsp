@@ -5,15 +5,15 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
-    <title>Login Success Page</title>
+    <title>Checkout Page</title>
 </head>
 <body>
 <%
-    //allow access only if session exists
+    String userName = null;
+//allow access only if session exists
     if(session.getAttribute("user") == null){
         response.sendRedirect("login.html");
-    }
-    String userName = null;
+    }else userName = (String) session.getAttribute("user");
     String sessionID = null;
     Cookie[] cookies = request.getCookies();
     if(cookies !=null){
@@ -24,7 +24,7 @@
 %>
 <h3>Hi <%=userName %>, do the checkout.</h3>
 <br>
-<form action="LogoutServlet" method="post">
+<form action="<%=response.encodeURL("LogoutServlet") %>" method="post">
     <input type="submit" value="Logout" >
 </form>
 </body>

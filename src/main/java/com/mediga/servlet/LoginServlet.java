@@ -59,7 +59,9 @@ public class LoginServlet extends HttpServlet {
             userName.setMaxAge(30*60);
             response.addCookie(userName);
             response.setStatus(200);
-            response.sendRedirect("LoginSuccess.jsp");
+            //Get the encoded URL string. It’s a fallback approach and it kicks in only if browser cookies are disabled
+            String encodedURL = response.encodeRedirectURL("LoginSuccess.jsp");
+            response.sendRedirect(encodedURL);
         }else{
             RequestDispatcher rd = getServletContext().getRequestDispatcher("/login.html");
             response.setStatus(401);
