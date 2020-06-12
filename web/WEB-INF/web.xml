@@ -16,6 +16,32 @@
         <param-value>mysql_pwd</param-value>
     </context-param>
 
+    <context-param>
+        <param-name>DBUSER</param-name>
+        <param-value>pankaj</param-value>
+    </context-param>
+    <context-param>
+        <param-name>DBPWD</param-name>
+        <param-value>password</param-value>
+    </context-param>
+    <context-param>
+        <param-name>DBURL</param-name>
+        <param-value>jdbc:mysql://localhost/mysql_db</param-value>
+    </context-param>
+
+    <listener>
+        <listener-class>com.mediga.listener.AppContextListener</listener-class>
+    </listener>
+    <listener>
+        <listener-class>com.mediga.listener.AppContextAttributeListener</listener-class>
+    </listener>
+    <listener>
+        <listener-class>com.mediga.listener.MySessionListener</listener-class>
+    </listener>
+    <listener>
+        <listener-class>com.mediga.listener.MyServletRequestListener</listener-class>
+    </listener>
+
     <filter>
         <filter-name>RequestLoggingFilter</filter-name>
         <filter-class>com.mediga.filter.RequestLoggingFilter</filter-class>
